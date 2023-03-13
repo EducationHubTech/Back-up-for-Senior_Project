@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Mar 13, 2023 at 03:55 AM
+-- Generation Time: Mar 13, 2023 at 02:40 PM
 -- Server version: 10.4.13-MariaDB
 -- PHP Version: 7.4.8
 
@@ -109,8 +109,9 @@ CREATE TABLE `user` (
   `u_name` varchar(50) NOT NULL,
   `u_id` varchar(50) NOT NULL,
   `u_pass` varchar(50) NOT NULL,
-  `u_addr` varchar(100) NOT NULL,
-  `a_no` bigint(12) NOT NULL,
+  `sub` varchar(50) NOT NULL,
+  `woreda` int(2) NOT NULL,
+  `id_no` bigint(12) NOT NULL,
   `gen` varchar(15) NOT NULL,
   `mob` bigint(13) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -119,8 +120,13 @@ CREATE TABLE `user` (
 -- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`u_name`, `u_id`, `u_pass`, `u_addr`, `a_no`, `gen`, `mob`) VALUES
-('Yoseph Negash', 'yosephn22@gmail.com', '123456', 'Addis Ababa', 123214521452, 'Male', 947461118);
+INSERT INTO `user` (`u_name`, `u_id`, `u_pass`, `sub`, `woreda`, `id_no`, `gen`, `mob`) VALUES
+('Yoseph Negash', 'yosephn22@gmail.com', '12@3456', '', 0, 0, '12345', 0),
+('mahlet worku', 'mahlet@34552', 'mahi12', 'Lideta', 13, 13577, 'Female', 251345674833),
+('girum seifu', 'girum@3452', '222333', 'Lemi Kura', 4, 22345, 'Male', 251945678689),
+('ahlam', 'ahlam42@gmail.com', '12@3456', 'Kolfe Keranio', 14, 32145, 'Female', 254987654234),
+('sefanit negash', 'sefanit@123', '1233456', 'Addis Ketema', 8, 32232, 'Female', 251934567890),
+('Manuhe Melakmu', 'manuhe11melkamu@gmail.com', '12@3456', 'Arada', 0, 54322, 'Male', 251920730239);
 
 --
 -- Indexes for dumped tables
@@ -166,7 +172,7 @@ ALTER TABLE `update_case`
 -- Indexes for table `user`
 --
 ALTER TABLE `user`
-  ADD PRIMARY KEY (`a_no`),
+  ADD PRIMARY KEY (`id_no`),
   ADD UNIQUE KEY `u_id` (`u_id`),
   ADD UNIQUE KEY `mob` (`mob`);
 

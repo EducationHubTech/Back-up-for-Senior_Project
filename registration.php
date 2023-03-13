@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <?php
 if(isset($_POST['s'])){
@@ -12,12 +12,12 @@ if(isset($_POST['s'])){
         $u_id=$_POST['email'];
         $u_pass=$_POST['password'];
         $sub=$_POST['subcity'];
-        $u_addr=$_POST['adress'];
-        $a_no=$_POST['aadhar_number'];
+        $woreda=$_POST['adress'];
+        $id_no=$_POST['id_number'];
         $gen=$_POST['gender'];
         $mob=$_POST['mobile_number'];
        // $password=md5($u_pass);
-       $reg="insert into user values('$u_name','$u_id','$u_pass','$u_addr','$a_no','$gen','$mob')";
+       $reg="insert into user values('$u_name','$u_id','$u_pass','$sub','$woreda','$id_no','$gen','$mob')";
         mysqli_select_db($con,"on_the_go incident reporter");
         $res=mysqli_query($con,$reg);
         if(!$res)
@@ -41,13 +41,14 @@ if(isset($_POST['s'])){
             var sta1=document.getElementById("email1").value;
             var sta2=document.getElementById("pass").value;
             var sta3=document.getElementById("addr").value;
-            var sta4=document.getElementById("aadh").value;
+            var sta4=document.getElementById("id").value;
             var sta5=document.getElementById("mobno").value;
 	   
   var x=sta.trim();
   var x1=sta1.indexOf(' ');
   var x2=sta2.indexOf(' ');
-  var x3=sta3.trim();
+  //var x3=sta3.trim();
+  var x3=sta3.indexOf(' ');
   var x4=sta4.indexOf(' ');
 	var x5=sta5.indexOf(' ');
 	if(sta!="" && x==""){
@@ -72,8 +73,8 @@ if(isset($_POST['s'])){
       alert("Space Not Allowed");
         }
         else if(sta4!="" && x4>=0){
-    document.getElementById("aadh").value="";
-    document.getElementById("aadh").focus();
+    document.getElementById("id").value="";
+    document.getElementById("id").focus();
       alert("Space Not Allowed");
         }
         else if(sta5!="" && x5>=0){
@@ -122,8 +123,9 @@ if(isset($_POST['s'])){
 					<p style="color:#dfdfdf">Full Name</p><input type="text"  name="name"  required="" id="name1" onfocusout="f1()" />
 					<p style="color:#dfdfdf">Email-Id</p><input type="email"  name="email"  required="" id="email1" onfocusout="f1()"/>
           <p style="color:#dfdfdf">Password</p><input type="text"  name="password"  placeholder="6 Character minimum" pattern=".{6,}" id="pass" onfocusout="f1()"/>
-          < class="left-w3-agile">
-						<p style="color:#dfdfdf">Home Subcity</p><select class="form-control" name="subcity">
+          
+						<p style="color:#dfdfdf">Home Subcity</p>
+            <select class="form-control" name="subcity">
 							<option>Akaki-Kality</option>
 							<option>Addis Ketema</option>
 							<option>Arada</option>
@@ -138,18 +140,18 @@ if(isset($_POST['s'])){
               
 						</select>
 					
-          <p style="color:#dfdfdf">woreda</p><input type="text"  name="adress"  minlength="2" maxlength="2" required pattern="[0123456789][0-9]{2}" id="addr" onfocusout="f1()"/>
-					<p style="color:#dfdfdf">ID Number</p><input type="text"  name="aadhar_number" minlength="5" maxlength="5" required pattern="[123456789][0-9]{5}" id="aadh" onfocusout="f1()"/>
-					<p class="left-w3-agile">
+            <p style="color:#dfdfdf">Woreda</p><input type="text"  name="adress"  minlength="2" maxlength="2" required pattern="[0-9]{2}" id="addr" onfocusout="f1()"/>
+					<p style="color:#dfdfdf">ID Number</p><input type="text"  name="id_number" minlength="5" maxlength="5" required pattern="[0-9]{5}" id="id" onfocusout="f1()"/>
+				
 						<p style="color:#dfdfdf">Gender</p><select class="form-control" name="gender">
 							<option>Male</option>
 							<option>Female</option>
 							<option>Others</option>
 						</select>
-					</div>
-					<div class="right-agileits">
-						<p style="color:#dfdfdf">Mobile</p><input type="text"  name="mobile_number" placeholder="begin with +251" required pattern="[+251][0-9]{}" minlength="13" maxlength="13" id="mobno" onfocusout="f1()"/>
-					</div>
+					
+				
+						<p style="color:#dfdfdf">Mobile</p><input type="text"  name="mobile_number" placeholder="Country code +251" required pattern="[+251][0-9]{}" minlength="13" maxlength="13" id="mobno" onfocusout="f1()"/>
+            </div>
 					<input type="submit" value="Submit" name="s">
 				</form>	
 			</div>	
