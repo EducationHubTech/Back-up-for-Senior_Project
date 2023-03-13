@@ -12,13 +12,13 @@ session_start();
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
     
     $u_id=$_SESSION['u_id'];
         
-        $result=mysqli_query($conn,"SELECT a_no FROM user where u_id='$u_id' ");
+        $result=mysqli_query($conn,"SELECT id_no FROM user where u_id='$u_id' ");
         $q2=mysqli_fetch_assoc($result);
-        $a_no=$q2['a_no'];
+        $id_no=$q2['id_no'];
     
         $result1=mysqli_query($conn,"SELECT u_name FROM user where u_id='$u_id' ");
         $q2=mysqli_fetch_assoc($result1);
@@ -46,7 +46,7 @@ if(isset($_POST['s'])){
     if($var>=0)
     {
           
-      $comp="insert into complaint(a_no,location,type_crime,d_o_c,description) values('$a_no','$location','$type_crime','$d_o_c','$description')";
+      $comp="insert into complaint(id_no,location,type_crime,d_o_c,description) values('$id_no','$location','$type_crime','$d_o_c','$description')";
       mysqli_select_db($con,"crime_portal"); 
       $res=mysqli_query($conn,$comp);
       
@@ -133,20 +133,23 @@ if(isset($_POST['s'])){
 			<div class="login-form"><p><h2 style="color:white">Welcome <?php echo "$u_name" ?></h2></p><br>
                                     <p><h2>Log New Complain</h2></p><br>	
 				<form action="#" method="post" style="color: gray">ID Number
-					<input type="text"  name="aadhar_number" placeholder="aadhar Number" required="" disabled value=<?php echo "$a_no"; ?>>
+					<input type="text"  name="ID_number" placeholder="ID Number" required="" disabled value=<?php echo "$id_no"; ?>>
 					
 				<div class="top-w3-agile" style="color: gray">Location of Crime
                     
-                    <select class="form-control" name="location">
-						<?php
-                        $loc=mysqli_query($conn,"select location from police_station");
-                        while($row=mysqli_fetch_array($loc))
-                        {
-                            ?>
-                                	<option> <?php echo $row[0]; ?> </option>
-                            <?php
-                        }
-                        ?>
+             <select class="form-control" name="location">
+						
+                <option>Akaki-Kality</option>
+						  	<option>Addis Ketema</option>
+							  <option>Arada</option>
+                <option>Bole</option>
+                <option>Gulele</option>
+                <option>Kolfe Keranio</option>
+                <option>Lideta</option>
+                <option>Nefas Silk-Lafto</option>
+                <option>Kirkos</option>
+                <option>Yeka</option>
+                <option>Lemi Kura</option>   
 					
 				    </select>
 				</div>

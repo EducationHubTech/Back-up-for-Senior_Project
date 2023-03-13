@@ -9,16 +9,16 @@
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
     
     if(!isset($_SESSION['x']))
     header("location:userlogin.php");
     
         $u_id=$_SESSION['u_id'];
-        $result1=mysqli_query($conn,"SELECT a_no FROM user where u_id='$u_id'");
+        $result1=mysqli_query($conn,"SELECT id_no FROM user where u_id='$u_id'");
       
         $q2=mysqli_fetch_assoc($result1);
-        $a_no=$q2['a_no'];
+        $id_no=$q2['id_no'];
     
     
     
@@ -32,11 +32,11 @@
 
             $_SESSION['cid']=$cid;
             
-            $resu=mysqli_query($conn,"SELECT a_no FROM complaint where c_id='$cid'");
+            $resu=mysqli_query($conn,"SELECT id_no FROM complaint where c_id='$cid'");
             $qn=mysqli_fetch_assoc($resu);
                 
             
-           if($qn['a_no']==$q2['a_no'])
+           if($qn['id_no']==$q2['id_no'])
            {
                 header("location:complainer_complain_details.php"); 
            }
@@ -50,7 +50,7 @@
     
     
     
-    $query="select c_id,type_crime,d_o_c,location from complaint where a_no='$a_no' order by c_id desc";
+    $query="select c_id,type_crime,d_o_c,location from complaint where id_no='$id_no' order by c_id desc";
     $result=mysqli_query($conn,$query);  
     ?>
     

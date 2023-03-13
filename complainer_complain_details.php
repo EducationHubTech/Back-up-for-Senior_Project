@@ -10,7 +10,7 @@
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
     
     
     if(!isset($_SESSION['x']))
@@ -115,7 +115,7 @@
           background-color: rgba(0,0,0,0.8);
           color: white;
           text-align: center;">
-         <h4 style="color: white;">&copy <b>Suman MH</b></h4>
+         <h4 style="color: white;">&copy <b>on_the_go incident reporter</b></h4>
        </div> 
     
      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
