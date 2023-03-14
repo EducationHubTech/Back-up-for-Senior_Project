@@ -51,12 +51,12 @@ tr:nth-child(even) {
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li ><a href="official_login.php">Official Login</a></li>
-        <li ><a href="Takerlogin.php">Taker Login</a></li>
-        <li class="active"><a href="TakerHome.php">Taker Home</a></li>
+        <li ><a href="Handlerlogin.php">Handler Login</a></li>
+        <li class="active"><a href="HandlerHome.php">Handler Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
       
-        <li><a href="Taker_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        <li><a href="Handler_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </div>
@@ -85,7 +85,7 @@ tr:nth-child(even) {
 <?php
     session_start();
     if(!isset($_SESSION['x']))
-        header("location:Takerlogin.php");
+        header("location:Handlerlogin.php");
     
     $conn=mysqli_connect("localhost","root","");
    
@@ -93,45 +93,11 @@ tr:nth-child(even) {
       die("Connection failed: " . mysqli_connect_error());
   }
   mysqli_select_db($conn,"on_the_go incident reporter");
-  // Fetch all the complaints from the database
-  $sql = "SELECT c_id, type_crime, d_o_c,location, inc_status, p_id FROM complaint";
-  $result = mysqli_query($conn, $sql);
-  
-  // Check if there are any complaints in the database
-  if (mysqli_num_rows($result) > 0) {
-      // Start the table and output the header row
-      echo "<table>";
-      echo "<tr>
-      <th>Complaint ID</th>
-      <th>Type of Crime</th>
-      <th>Date of Crime</th>
-      <th>Location</th>
-      <th>Complaint Status</th>
-      <th>Police ID</th></tr>";
-  
-      // Loop through the result set and output each row as a table row
-      while ($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>
-          <td>" . $row["c_id"] . "</td>
-          <td>" . $row["type_crime"] . "</td>
-          <td>" . $row["d_o_c"] . "</td>
-          <td>" . $row["location"] . "</td>
-          <td>" . $row["inc_status"] . "</td>
-          <td>" . $row["p_id"] . "</td>
-          <td><div class='btn-group' role='group'><button type='button' class='btn btn-primary'>Pass to Handler</button><button type='button' class='btn btn-danger'>Reject Complaint</button></div></td></tr>";
-      }
-  
-      // End the table
-      echo "</table>";
-  } else {
-      // If there are no complaints in the database, output a message
-      echo "No complaints found.";
-  }
-  
-  // Close the database connection
-  mysqli_close($conn);
+
+
   ?>
-	<title>Taker Homepage</title>
+
+	<title>Handler Homepage</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">

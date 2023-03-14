@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b>Crime Portal</b></a>
+      <a class="navbar-brand" href="home.php"><b>on_the_go incident reporter</b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -31,42 +31,7 @@
 
  <div class="container">
   <hr> <br><br> <br><br> <br><br> <br><br> <br><br>
-        <div class="row text-center">
-
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Police Login</h3>
-                        <p>
-                            <a href="policelogin.php" class="btn btn-primary">Police Login</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Incharge Login</h3>
-                        <p>
-                            <a href="inchargelogin.php" class="btn btn-primary">Incharge Login</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>HQ Login</h3>
-                        <p>
-                            <a href="headlogin.php" class="btn btn-primary">HQ Login</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-
-
+        <d class="row text-center">
 
             <div class="col-md-4 col-sm-12 hero-feature">
                 <div class="thumbnail">
@@ -78,6 +43,45 @@
                     </div>
                 </div>
             </div>
+
+            <div class="col-md-4 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Handler Login</h3>
+                        <p>
+                            <a href="Handlerlogin.php" class="btn btn-primary">Handler Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+           
+
+            <div class="col-md-4 col-sm-12 hero-feature">
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>subcity_police Login</h3>
+                        <p>
+                            <a href="policelogin.php" class="btn btn-primary">police Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+ 
+           
+            <div class="col-md-4 col-sm-12 hero-feature" >
+                <div class="thumbnail">
+                    <div class="caption">
+                        <h3>Admin Login</h3>
+                        <p>
+                            <a href="headlogin.php" class="btn btn-primary">HQ Login</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            
+
+
         </div>
 </div>
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
