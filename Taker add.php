@@ -25,9 +25,8 @@ if(isset($_POST['s'])){
         $t_name=$_POST['taker_name'];
         $t_id=$_POST['taker_id'];
         $t_pass=$_POST['password'];
-        
 
-    
+   
     $reg="insert into taker values('$t_id','$t_name','$t_pass')";
      mysqli_select_db($con,"on_the_go incident reporter");
         $res=mysqli_query($con,$reg);
@@ -49,13 +48,23 @@ if(isset($_POST['s'])){
      function f1()
         {
          
+            
+            
+           
+
+
+
+
+
+
          var sta1=document.getElementById("tname").value;
          var sta2=document.getElementById("tid").value;
          var sta3=document.getElementById("pas").value;
          
          
-         var x2=sta2.indexOf(' ');
+         
          var x1=sta1.trim();
+         var x2=sta2.indexOf(' ');
          var x3=sta3.indexOf(' ');
          
          
@@ -74,8 +83,7 @@ if(isset($_POST['s'])){
     document.getElementById("pas").focus();
       alert("Space Not Allowed");
         }
-     
-      }
+    }
 </script>
 </head>
 
@@ -120,6 +128,9 @@ if(isset($_POST['s'])){
 					<br>
       Password<input type="text"  name="password" placeholder="6 Character minimum" pattern=".{6,}" required="" id="pas" onfocusout="f1()"/>
 	                <input type="submit" value="Submit" name="s">
+
+
+           
 				</form>	
 			</div>	
 		</div>

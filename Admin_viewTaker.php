@@ -10,8 +10,20 @@
     {
         die("could not connect".mysqli_error());
     }
+
     mysqli_select_db($conn,"on_the_go incident reporter");
-    
+
+    if(isset($_POST['s2']))
+    {
+        if($_SERVER["REQUEST_METHOD"]=="POST")
+        {
+            $tid=$_POST['tid'];
+            
+            $q1=mysqli_query($conn,"delete from taker where T_id='$tid'");
+            
+        }
+    }
+
     $query="select T_id,T_name from taker";
     $result=mysqli_query($conn,$query);  
     ?>
@@ -21,7 +33,18 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
+    <script>
+     function f1()
+        {
+         var sta1=document.getElementById("ciid").value;
 
+         var x1=sta1.indexOf(' ');
+         if(sta1!="" && x1>=0){
+            document.getElementById("ciid").value="";
+            alert("Blank Field not Allowed");
+      }
+    }
+      </script>
 </head>
 <body>
 	<nav  class="navbar navbar-default navbar-fixed-top">
@@ -81,10 +104,17 @@
     <?php
     } 
     ?>
-  
+
+    
 </table>
  </div>
 
+ <form style="margin-top: 2%; margin-left: 40%;" method="post">
+     <input type="text" name="tid" style="width: 250px; height: 30px; background-color:white;" placeholder="&nbsp Taker Id" id="ciid" onfocusout="f1()" required>
+        <div>
+      <input class="btn btn-danger" type="submit" value="Delete Taker" name="s2" style="margin-top: 10px; margin-left: 9%;">
+        </div>
+    </form>
 
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>

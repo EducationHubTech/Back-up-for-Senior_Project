@@ -12,6 +12,16 @@
     }
     mysqli_select_db($conn,"on_the_go incident reporter");
     
+    if(isset($_POST['s2']))
+    {
+        if($_SERVER["REQUEST_METHOD"]=="POST")
+        {
+            $hid=$_POST['hid'];
+            
+            $q1=mysqli_query($conn,"delete from handler where h_id='$hid'");
+           
+        }
+    }
     $query="select h_id,h_name from handler";
     $result=mysqli_query($conn,$query);  
     ?>
@@ -20,7 +30,18 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
+    <script>
+     function f1()
+        {
+         var sta1=document.getElementById("ciid").value;
 
+         var x1=sta1.indexOf(' ');
+         if(sta1!="" && x1>=0){
+            document.getElementById("ciid").value="";
+            alert("Blank Field not Allowed");
+      }
+    }
+      </script>
 
 </head>
 <body>
@@ -85,6 +106,13 @@
 </table>
  </div>
 
+
+ <form style="margin-top: 2%; margin-left: 40%;" method="post">
+     <input type="text" name="hid" style="width: 250px; height: 30px; background-color:white;" placeholder="&nbsp Handler Id" id="ciid" onfocusout="f1()" required>
+        <div>
+      <input class="btn btn-danger" type="submit" value="Delete Handler" name="s2" style="margin-top: 10px; margin-left: 9%;">
+        </div>
+    </form>
 
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
