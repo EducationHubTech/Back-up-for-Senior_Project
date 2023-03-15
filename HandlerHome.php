@@ -69,7 +69,33 @@ tr:nth-child(even) {
         </div>
     </form>
     
-    
+    <table>
+		<thead>
+			<tr>
+				<th>Complaint ID</th>
+				<th>Type of Crime</th>
+				<th>Date of Crime</th>
+				<th>Location</th>
+				<th>Complaint Status</th>
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				if(isset($_POST['complaints'])) {
+					$complaints = $_POST['complaints'];
+					foreach($complaints as $complaint) {
+						echo "<tr>";
+						echo "<td>" . $complaint['complaint_id'] . "</td>";
+						echo "<td>" . $complaint['type_of_crime'] . "</td>";
+						echo "<td>" . $complaint['date_of_crime'] . "</td>";
+						echo "<td>" . $complaint['location'] . "</td>";
+						echo "<td>" . $complaint['complaint_status'] . "</td>";
+						echo "</tr>";
+					}
+				}
+			?>
+		</tbody>
+	</table>
     
 
     <div style="position: fixed;

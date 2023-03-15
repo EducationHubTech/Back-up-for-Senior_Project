@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
-	<title>Police Login</title>
+	<title>Subcity Police Login</title>
   <?php
 
 if(isset($_POST['s']))
@@ -17,13 +17,13 @@ if(isset($_POST['s']))
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
     
     if($_SERVER["REQUEST_METHOD"]=="POST")
     {
         $name=$_POST['email'];
         $pass=$_POST['password'];
-        $result=mysqli_query($conn,"SELECT p_id,p_pass FROM police where p_id='$name' and p_pass='$pass' ");
+        $result=mysqli_query($conn,"SELECT p_id,p_pass FROM sub_police where p_id='$name' and p_pass='$pass' ");
         $_SESSION['pol']=$name;       
         if(mysqli_num_rows($result)==0)
         {
@@ -66,12 +66,12 @@ if(sta2!="" && x2>=0){
 	<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="home.php"><b>Crime Portal</b></a>
+        <a class="navbar-brand" href="home.php"><b>on_the_go incident reporter</b></a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
            <li><a href="official_login.php">Official Login</a></li>
-           <li class="active"><a href="policelogin.php">Police Login</a></li>
+           <li class="active"><a href="Sub_policelogin.php">Subcity Police Login</a></li>
         </ul>
     </div>
   </div>
@@ -80,7 +80,7 @@ if(sta2!="" && x2>=0){
 	<div class="form" style="margin-top: 15%">
 		<form method="post">
   <div class="form-group" style="width: 30%">
-    <label for="exampleInputEmail1"  ><h1 style="color:white">Police Id</h1></label>
+    <label for="exampleInputEmail1"  ><h1 style="color:white">Subcity Police Id</h1></label>
     <input type="text" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" size="5" placeholder="Enter user id" required onfocusout="f1()">
      </div>
   <div class="form-group" style="width:30%">
@@ -89,7 +89,7 @@ if(sta2!="" && x2>=0){
   </div>
   
   
-  <button type="submit" class="btn btn-primary" name="s">Submit</button>
+  <button type="submit" class="btn btn-primary" name="s">Login</button>
 </form>
 	</div>
 </div>
@@ -101,7 +101,7 @@ if(sta2!="" && x2>=0){
    background-color: rgba(0,0,0,0.8);
    color: white;
    text-align: center;">
-  <h4 style="color: white;">&copy <b>Suman MH</b></h4>
+  <h4 style="color: white;">&copy <b>on_the_go incident reporter</b></h4>
 </div> 
 
 

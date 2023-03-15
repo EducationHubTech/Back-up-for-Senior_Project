@@ -64,13 +64,13 @@
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li ><a href="official_login.php">Official Login</a></li>
-        <li ><a href="policelogin.php">Police Login</a></li>
-        <li class="active"><a href="police_pending_complain.php">Police Home</a></li>
+        <li ><a href="Sub_policelogin.php">Subcity Police Login</a></li>
+        <li class="active"><a href="Sub_policeHome.php">Subcity Police Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li class="active" ><a href="police_pending_complain.php">Pending Complaints</a></li>
-        <li ><a href="police_complete.php">Completed Complaints</a></li>
-        <li><a href="p_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        <li class="active" ><a href="Sub_policeHome.php">Pending Complaints</a></li>
+        <li ><a href="Sub_police_complete.php">Completed Complaints</a></li>
+        <li><a href="Sub_police_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </div>

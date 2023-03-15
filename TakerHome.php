@@ -13,6 +13,11 @@ th, td {
     border-bottom: 1px solid #000;
 }
 
+th{
+  background-color: black; 
+  color: white;
+}
+
 tr:hover {
     background-color: #f5f5f5;
 }
@@ -118,8 +123,9 @@ tr:nth-child(even) {
           <td>" . $row["location"] . "</td>
           <td>" . $row["inc_status"] . "</td>
           <td>" . $row["p_id"] . "</td>
-          <td><div class='btn-group' role='group'><button type='button' class='btn btn-primary'>Pass to Handler</button><button type='button' class='btn btn-danger'>Reject Complaint</button></div></td></tr>";
-      }
+          <td><div class='btn-group' role='group'><a href='handler_page.php?id=" . $row["c_id"] . "' class='btn btn-primary'>Pass to Handler</a><button type='button' class='btn btn-danger'>Reject Complaint</button></div></td></tr>";
+      
+        }
   
       // End the table
       echo "</table>";

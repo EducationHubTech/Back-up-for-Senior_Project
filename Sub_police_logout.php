@@ -1,5 +1,5 @@
 <?php
 session_start();
-header("location:policelogin.php");
+header("location:Sub_policelogin.php");
 session_destroy();
 ?>
