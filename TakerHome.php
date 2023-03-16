@@ -38,6 +38,10 @@ tr:nth-child(even) {
     margin: 0 auto;
     width: 80%;
 }
+
+table tr.hidden-row {
+  display: none;
+}
 </style>
 </head>
 <body style="background-color: #dfdfdf">
@@ -88,6 +92,7 @@ tr:nth-child(even) {
 </div>
 
 
+
 <?php
     session_start();
     if(!isset($_SESSION['x']))
@@ -120,36 +125,35 @@ tr:nth-child(even) {
   
       // Loop through the result set and output each row as a table row
       while ($row = mysqli_fetch_assoc($result)) {
-          echo "<tr>
-          <td>" . $row["id_no"] . "</td>
-          <td>" . $row["c_id"] . "</td>
-          <td>" . $row["type_crime"] . "</td>
-          <td>" . $row["d_o_c"] . "</td>
-          <td>" . $row["repo_time_and_date"] . "</td>
-          <td>" . $row["location"] . "</td>
-          <td>" . $row["description"] . "</td>
-          <td>" . $row["inc_status"] . "</td>
-          <td>" . $row["p_id"] . "</td>
-          <td>
-    <div class='btn-group' role='group'>
-        <form method='post'>
-            <input type='hidden' name='c_id' value='" . $row["c_id"] . "'>
-            <input type='hidden' name='id_no' value='" . $row["id_no"] . "'>
-            <input type='hidden' name='type_crime' value='" . $row["type_crime"] . "'>
-            <input type='hidden' name='d_o_c' value='" . $row["d_o_c"] . "'>
-            <input type='hidden' name='repo_time_and_date' value='" . $row["repo_time_and_date"] . "'>
-            <input type='hidden' name='location' value='" . $row["location"] . "'>
-            <input type='hidden' name='description' value='" . $row["description"] . "'>
-            <input type='hidden' name='inc_status' value='" . $row["inc_status"] . "'>
-            <input type='hidden' name='p_id' value='" . $row["p_id"] . "'>
-            <button type='submit' name='pass_to_handler' class='btn btn-primary'>Pass to Handler</button>
-        </form>
-        <button type='button' class='btn btn-danger' onclick='rejectComplaint(" . $row["c_id"] . ")'>Reject Complaint</button>
-    </div>
-</td></tr>";
-      
-        }
-  
+        echo "<tr class='complaint-row' id='complaint-".$row["c_id"]."'>
+            <td>" . $row["id_no"] . "</td>
+            <td>" . $row["c_id"] . "</td>
+            <td>" . $row["type_crime"] . "</td>
+            <td>" . $row["d_o_c"] . "</td>
+            <td>" . $row["repo_time_and_date"] . "</td>
+            <td>" . $row["location"] . "</td>
+            <td>" . $row["description"] . "</td>
+            <td>" . $row["inc_status"] . "</td>
+            <td>" . $row["p_id"] . "</td>
+            <td>
+                <div class='btn-group' role='group'>
+                    <form method='post'>
+                        <input type='hidden' name='c_id' value='" . $row["c_id"] . "'>
+                        <input type='hidden' name='id_no' value='" . $row["id_no"] . "'>
+                        <input type='hidden' name='type_crime' value='" . $row["type_crime"] . "'>
+                        <input type='hidden' name='d_o_c' value='" . $row["d_o_c"] . "'>
+                        <input type='hidden' name='repo_time_and_date' value='" . $row["repo_time_and_date"] . "'>
+                        <input type='hidden' name='location' value='" . $row["location"] . "'>
+                        <input type='hidden' name='description' value='" . $row["description"] . "'>
+                        <input type='hidden' name='inc_status' value='" . $row["inc_status"] . "'>
+                        <input type='hidden' name='p_id' value='" . $row["p_id"] . "'>
+                        <button type='button' name='pass_to_handler' class='btn btn-primary' onclick='hideRow(".$row["c_id"].")'>Pass to Handler</button>
+                    </form>
+                    <button type='button' class='btn btn-danger' onclick='rejectComplaint(" . $row["c_id"] . ")'>Reject Complaint</button>
+                </div>
+            </td>
+        </tr>";
+    }
       // End the table
       echo "</table>";
   } else {
@@ -200,11 +204,15 @@ if(isset($_POST['pass_to_handler'])) {
      {
         document.getElementById("ciid").value="";
         alert("Blank Field not Allowed");
-      }       
+      }      
+       
 }
-
-
-
+function hideRow(complaintId) {
+  // get the table row that contains the button
+  var row = document.getElementById("complaint-"+complaintId);
+  // add the 'hidden-row' class to the row
+  row.classList.add('hidden-row');
+}
 </script>
 
 
