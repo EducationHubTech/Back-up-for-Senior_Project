@@ -118,7 +118,7 @@
  <form style="margin-top: 2%; margin-left: 40%;" method="post">
      <input type="text" name="pid" style="width: 250px; height: 30px; background-color:white;" placeholder="&nbsp Police Id" id="ciid" onfocusout="f1()" required>
         <div>
-      <input class="btn btn-danger" type="submit" value="Delete police" name="s2" style="margin-top: 10px; margin-left: 9%;">
+      <input class="btn btn-danger" type="submit" value="Delete Sub_police" name="s2" style="margin-top: 10px; margin-left: 9%;">
         </div>
     </form>
 

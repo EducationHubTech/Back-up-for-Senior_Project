@@ -39,7 +39,6 @@ tr:nth-child(even) {
     width: 80%;
 }
 </style>
-
 </head>
 <body style="background-color: #dfdfdf">
 	<nav  class="navbar navbar-default navbar-fixed-top">
@@ -51,7 +50,7 @@ tr:nth-child(even) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b> on_the-go incident reporter </b></a>
+      <a class="navbar-brand" href="home.php"><b> on_the_go incident reporter </b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -87,6 +86,8 @@ tr:nth-child(even) {
    text-align: center;">
   <h4 style="color: white;">&copy <b> on_the_go incident reporter | All Right Reserved</b></h4>
 </div>
+
+
 <?php
     session_start();
     if(!isset($_SESSION['x']))
@@ -99,7 +100,7 @@ tr:nth-child(even) {
   }
   mysqli_select_db($conn,"on_the_go incident reporter");
   // Fetch all the complaints from the database
-  $sql = "SELECT c_id, type_crime, d_o_c,location, inc_status, p_id FROM complaint";
+  $sql = "SELECT id_no,c_id, type_crime, d_o_c,repo_time_and_date,location,description, inc_status, p_id FROM complaint";
   $result = mysqli_query($conn, $sql);
   
   // Check if there are any complaints in the database
@@ -107,23 +108,45 @@ tr:nth-child(even) {
       // Start the table and output the header row
       echo "<table>";
       echo "<tr>
+      <th>Registration ID</th>
       <th>Complaint ID</th>
       <th>Type of Crime</th>
       <th>Date of Crime</th>
+      <th>Reported Time and Date </th>
       <th>Location</th>
+      <th>Descripition</th>
       <th>Complaint Status</th>
       <th>Police ID</th></tr>";
   
       // Loop through the result set and output each row as a table row
       while ($row = mysqli_fetch_assoc($result)) {
           echo "<tr>
+          <td>" . $row["id_no"] . "</td>
           <td>" . $row["c_id"] . "</td>
           <td>" . $row["type_crime"] . "</td>
           <td>" . $row["d_o_c"] . "</td>
+          <td>" . $row["repo_time_and_date"] . "</td>
           <td>" . $row["location"] . "</td>
+          <td>" . $row["description"] . "</td>
           <td>" . $row["inc_status"] . "</td>
           <td>" . $row["p_id"] . "</td>
-          <td><div class='btn-group' role='group'><a href='handler_page.php?id=" . $row["c_id"] . "' class='btn btn-primary'>Pass to Handler</a><button type='button' class='btn btn-danger'>Reject Complaint</button></div></td></tr>";
+          <td>
+    <div class='btn-group' role='group'>
+        <form method='post'>
+            <input type='hidden' name='c_id' value='" . $row["c_id"] . "'>
+            <input type='hidden' name='id_no' value='" . $row["id_no"] . "'>
+            <input type='hidden' name='type_crime' value='" . $row["type_crime"] . "'>
+            <input type='hidden' name='d_o_c' value='" . $row["d_o_c"] . "'>
+            <input type='hidden' name='repo_time_and_date' value='" . $row["repo_time_and_date"] . "'>
+            <input type='hidden' name='location' value='" . $row["location"] . "'>
+            <input type='hidden' name='description' value='" . $row["description"] . "'>
+            <input type='hidden' name='inc_status' value='" . $row["inc_status"] . "'>
+            <input type='hidden' name='p_id' value='" . $row["p_id"] . "'>
+            <button type='submit' name='pass_to_handler' class='btn btn-primary'>Pass to Handler</button>
+        </form>
+        <button type='button' class='btn btn-danger' onclick='rejectComplaint(" . $row["c_id"] . ")'>Reject Complaint</button>
+    </div>
+</td></tr>";
       
         }
   
@@ -133,8 +156,34 @@ tr:nth-child(even) {
       // If there are no complaints in the database, output a message
       echo "No complaints found.";
   }
-  
-  // Close the database connection
+
+// check if the pass to handler button was clicked
+if(isset($_POST['pass_to_handler'])) {
+
+    // retrieve the data from the row
+    $c_id = $_POST['c_id'];
+    $id_no = $_POST['id_no'];
+    $type_crime = $_POST['type_crime'];
+    $d_o_c = $_POST['d_o_c'];
+    $repo_time_and_date = $_POST['repo_time_and_date'];
+    $location = $_POST['location'];
+    $description = $_POST['description'];
+    $inc_status = $_POST['inc_status'];
+    $p_id = $_POST['p_id'];
+
+    // insert the data into the p_handler table
+    $sql = "INSERT INTO p_handler (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id)
+    VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
+    
+    if ($conn->query($sql) === TRUE) {
+        // remove the row from the table
+        // add your code to remove the row here
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
+}
+
+
   mysqli_close($conn);
   ?>
 	<title>Taker Homepage</title>
@@ -153,7 +202,13 @@ tr:nth-child(even) {
         alert("Blank Field not Allowed");
       }       
 }
+
+
+
 </script>
+
+
+
 
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
