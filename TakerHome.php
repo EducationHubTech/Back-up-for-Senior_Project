@@ -42,6 +42,10 @@ tr:nth-child(even) {
 table tr.hidden-row {
   display: none;
 }
+
+table tr.invisible-row {
+  display: none;
+}
 </style>
 </head>
 <body style="background-color: #dfdfdf">
@@ -136,7 +140,7 @@ table tr.hidden-row {
             <td>" . $row["inc_status"] . "</td>
             <td>" . $row["p_id"] . "</td>
             <td>
-                <div class='btn-group' role='group'>
+                
                     <form method='post'>
                         <input type='hidden' name='c_id' value='" . $row["c_id"] . "'>
                         <input type='hidden' name='id_no' value='" . $row["id_no"] . "'>
@@ -147,10 +151,26 @@ table tr.hidden-row {
                         <input type='hidden' name='description' value='" . $row["description"] . "'>
                         <input type='hidden' name='inc_status' value='" . $row["inc_status"] . "'>
                         <input type='hidden' name='p_id' value='" . $row["p_id"] . "'>
-                        <button type='button' name='pass_to_handler' class='btn btn-primary' onclick='hideRow(".$row["c_id"].")'>Pass to Handler</button>
+                        <button type='submit' name='pass_to_handler' class='btn btn-primary' onclick='hideRow(".$row["c_id"].")'>Pass to Handler</button>
                     </form>
-                    <button type='button' class='btn btn-danger' onclick='rejectComplaint(" . $row["c_id"] . ")'>Reject Complaint</button>
-                </div>
+        </td>
+        <td>
+                    <form method='post'>
+                    <input type='hidden' name='c_id' value='" . $row["c_id"] . "'>
+                    <input type='hidden' name='id_no' value='" . $row["id_no"] . "'>
+                    <input type='hidden' name='type_crime' value='" . $row["type_crime"] . "'>
+                    <input type='hidden' name='d_o_c' value='" . $row["d_o_c"] . "'>
+                    <input type='hidden' name='repo_time_and_date' value='" . $row["repo_time_and_date"] . "'>
+                    <input type='hidden' name='location' value='" . $row["location"] . "'>
+                    <input type='hidden' name='description' value='" . $row["description"] . "'>
+                    <input type='hidden' name='inc_status' value='" . $row["inc_status"] . "'>
+                    <input type='hidden' name='p_id' value='" . $row["p_id"] . "'>
+                    <button type='submit' name='reject_complaint' class='btn btn-danger' onclick='confirmReject(".$row["c_id"].")'>Confirm Rejection</button>
+                   </form> 
+                       
+                   
+                
+            
             </td>
         </tr>";
     }
@@ -188,6 +208,55 @@ if(isset($_POST['pass_to_handler'])) {
 }
 
 
+
+
+
+if (isset($_POST['reject_complaint'])) {
+  // get the values from the $_POST superglobal array
+  $c_id = $_POST['c_id'];
+  $id_no = $_POST['id_no'];
+  $type_crime = $_POST['type_crime'];
+  $d_o_c = $_POST['d_o_c'];
+  $repo_time_and_date = $_POST['repo_time_and_date'];
+  $location = $_POST['location'];
+  $description = $_POST['description'];
+  $inc_status = $_POST['inc_status'];
+  $p_id = $_POST['p_id'];
+
+
+  
+
+  // check if the connection was successful
+  if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+
+  // insert the values into the database
+  $sql = "INSERT INTO del_taker (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id) VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
+
+  if (mysqli_query($conn, $sql)) {
+      //echo "Record inserted successfully";
+  } else {
+      echo "Error inserting record: " . mysqli_error($conn);
+  }
+
+
+  
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+// close the database connection
   mysqli_close($conn);
   ?>
 	<title>Taker Homepage</title>
@@ -211,7 +280,24 @@ function hideRow(complaintId) {
   // get the table row that contains the button
   var row = document.getElementById("complaint-"+complaintId);
   // add the 'hidden-row' class to the row
-  row.classList.add('hidden-row');
+  row.classList.add('invisible-row');
+}
+
+
+function confirmReject(complaintId) {
+ var confirmed = confirm("Are you sure you want to reject this complaint?");
+ if (!confirmed) {
+  return false;
+   }
+  
+    //hide the table row that contains the button
+    var row = document.getElementById("complaint-"+complaintId);
+    row.classList.add('hidden-row');
+   return true;
+
+ 
+
+
 }
 </script>
 
