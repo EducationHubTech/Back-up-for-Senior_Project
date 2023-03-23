@@ -9,18 +9,18 @@
      <?php
     session_start();
     if(!isset($_SESSION['x']))
-        header("location:policelogin.php");
+        header("location:Sub_policelogin.php");
      
     $conn=mysqli_connect("localhost","root","");
     if(!$conn)
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
       
     
     $p_id=$_SESSION['pol'];
-     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location,mob,u_addr FROM complaint natural join user where p_id='$p_id' and pol_status='ChargeSheet Filed' order by c_id desc");
+     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location FROM p_handler natural join user where p_id='$p_id' and pol_status='ChargeSheet Filed' order by c_id desc");
     ?>
 
 </head>
@@ -34,18 +34,18 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b>Crime Portal</b></a>
+      <a class="navbar-brand" href="home.php"><b>On_The_Go Incident Reporter</b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li ><a href="official_login.php">Official Login</a></li>
-        <li ><a href="policelogin.php">Police Login</a></li>
-        <li><a href="police_pending_complain.php">Police Home</a></li>
+        <li ><a href="Sub_policelogin.php">Subcity Police Login</a></li>
+        <li><a href="Sub_policeHome.php">Subcity Police Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="police_pending_complain.php">Pending Complaints</a></li>
-        <li  class="active" ><a href="police_complete.php">Completed Complaints</a></li>
-        <li><a href="p_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
+        <li><a href="Sub_policeHome.php">Pending Complaints</a></li>
+        <li  class="active" ><a href="Sub_police_complete.php">Completed Complaints</a></li>
+        <li><a href="Sub_police_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
       </ul>
     </div>
   </div>
@@ -77,9 +77,7 @@
         <td><?php echo $rows['type_crime']; ?></td>     
         <td><?php echo $rows['d_o_c']; ?></td>   
         <td><?php echo $rows['location']; ?></td>
-          <td><?php echo $rows['mob']; ?></td>
-          <td><?php echo $rows['u_addr']; ?></td>
-                  
+                   
       </tr>
     </tbody>
     

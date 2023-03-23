@@ -49,7 +49,7 @@ table tr.invisible-row {
 
 mark {
   background-color:white;
-  color:black;
+  color:#3b3b3b;
 }
 </style>
 </head>

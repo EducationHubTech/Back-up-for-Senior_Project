@@ -137,15 +137,15 @@
 
   <div style="width: 100%; height: 250px;"> 
     
-    <div style="width: 50%;float: left;height: 250px; background-color: #dcdcdc"> 
+    <div style="width: 50%;float: left;height: 250px; background-color: #dcdcdc;"> 
      
      <form method="post">
     
       <h5 style="text-align: center;"><b>Complaint ID</b></h5>                 
-      <input type="text" name="cid" style="margin-left: 47%; width: 50px;background-color: #fff" disabled value="<?php echo "$cid" ?>">
+      <input type="text" name="cid" style="margin-left: 47%; width: 50px;color: #fff" disabled value="<?php echo "$cid" ?>">
         
          
-      <select class="form-control" style="align-content: center;margin-top: 20px; margin-left: 35%; width: 180px;" name="update">
+      <select class="form-control" style="align-content: center;margin-top: 20px; margin-left: 35%; width: 180px; color:white; background-color:#3b3b3b" name="update">
           <option>Criminal Verified</option>
           <option>Criminal Caught</option>
           <option>Criminal Interrogated</option>
@@ -159,7 +159,7 @@
     </div>     
      <div style="width: 50%;float: right;height: 250px; background-color: #dfdfdf;">
      <form method="post">
-     <textarea name="final_report" cols="40" rows="5" placeholder="Final Report" style="margin-top: 20px;margin-left: 20px;background-color: #fff" id="ciid" onfocusout="f1()" required></textarea>
+     <textarea name="final_report" cols="40" rows="5" placeholder="Final Report" style="margin-top: 20px;margin-left: 20px;color:#fff" id="ciid" onfocusout="f1()" required></textarea>
      <div>
       <input  class="btn btn-danger" type="submit" value="Close Case" name="close" style="margin-left: 20px; margin-top: 10px; margin-bottom:20px;">
        </div> 

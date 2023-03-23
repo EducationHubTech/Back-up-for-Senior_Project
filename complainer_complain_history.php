@@ -110,7 +110,7 @@
 
     <div>
         <form style="float: right; margin-right: 100px; margin-top: 65px;" method="post">
-            <input type="text" name="cid" style="width: 250px; height: 30px; color: black;" placeholder="&nbsp Complain Id" id="ciid" onfocusout="f1()" required>
+            <input type="text" name="cid" style="width: 250px; height: 30px; color:white ;" placeholder="&nbsp Complain Id" id="ciid" onfocusout="f1()" required>
             <input class="btn btn-primary btn-sm" type="submit" value="Search" style="margin-top:2px; margin-left:20px;" name="s2">
         </form>
     </div>
