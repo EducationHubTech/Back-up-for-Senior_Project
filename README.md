@@ -1,3 +1,16 @@
-# Back-up-for-Senior_Project
+# Programming Language for Senior_Project
 
-well done guys!
+ Front end part
+ 
+- Html
+- css
+- js
+- jquery
+- Bootstrap
+
+ Backend end part
+
+- php
+- mysql
+
+

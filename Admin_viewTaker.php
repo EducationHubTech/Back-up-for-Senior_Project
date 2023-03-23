@@ -47,7 +47,7 @@
       </script>
 </head>
 <body>
-	<nav  class="navbar navbar-default navbar-fixed-top">
+	<nav  class="navbar navbar-default navbar-fixed-top" style="background-color:#3b3b3b;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -56,7 +56,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b> on_the_go incident reporter </b></a>
+      <a class="navbar-brand" href="home.php"><b> On_The_Go Incident Reporter </b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       
@@ -116,6 +116,15 @@
         </div>
     </form>
 
+    <div style="position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:#3b3b3b;
+   color: white;
+   text-align: center;">
+  <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
+</div>
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>

@@ -93,9 +93,11 @@ if(isset($_POST['s'])){
 <link href="complainer_page.css" rel="stylesheet" type="text/css" media="all" />
 
 </head>
-<body>
+<body style="background-size: cover;
+    background-image: url(pictures/insertpart.jpg);
+    background-position: center;">
 
-<nav class="navbar navbar-default navbar-fixed-top">
+<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#3b3b3b;">
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -158,6 +160,20 @@ if(isset($_POST['s'])){
 		</div>
 	</div>	
 </div>	
+
+
+<div style="position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color:#3b3b3b;
+            color: white;
+            text-align: center;">
+            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
+         </div>
+
+
+
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>

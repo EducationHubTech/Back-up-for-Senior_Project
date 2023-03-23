@@ -65,10 +65,10 @@ var x3=sta3.indexOf(' ');
 	<title>Complainant Login</title>
 </head>
 <body style="background-size: cover;
-    background-image: url(regi_bg.jpg);
+    background-image: url(pictures/complaint.jpg);
     background-position: center;">
-	<nav class="navbar navbar-default navbar-fixed-top" style="height: 60px;">
-  <div class="container">
+	<nav class="navbar navbar-default navbar-fixed-top" style="height: 60px; background-color:#3b3b3b">
+  <div class="container" >
     <div class="navbar-header">
      
       <a class="navbar-brand" href="home.php" style="margin-top: 5%;"><b>On_The_Go Incident Reporter</b></a>
@@ -99,14 +99,14 @@ var x3=sta3.indexOf(' ');
 	</div>
 </div>
 <div style="position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color: rgba(0,0,0,0.7);
-   color: white;
-   text-align: center;">
-  <h4 style="color: white;">&copy <b> On_The_Go Incident Reporter</b></h4>
-</div>
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color:#3b3b3b;
+            color: white;
+            text-align: center;">
+            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
+         </div>
 
 </body>
 </html>

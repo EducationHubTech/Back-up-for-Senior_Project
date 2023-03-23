@@ -40,8 +40,8 @@ if(isset($_POST['s']))
 }
 ?> 
 </head>
-<body style="color: black;background-image: url(locker.jpeg);background-size: 100%;background-repeat: no-repeat;back">
-	<nav class="navbar navbar-default navbar-fixed-top">
+<body style="color: black;background-image: url(pictures/admin.jpg);background-size: 100%;background-repeat: no-repeat;back">
+	<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#3b3b3b;">
   <div class="container">
     <div class="navbar-header">
      
@@ -60,11 +60,11 @@ if(isset($_POST['s']))
   <div class="form" style="margin-top: 15%">
     <form method="post">
   <div class="form-group" style="width: 30%">
-    <label for="exampleInputEmail1"  ><h1 style="color:white">Admin Id</h1></label>
+    <label for="exampleInputEmail1"  ><h1 style="color:#fff">Admin Id</h1></label>
     <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" size="5" placeholder="Enter user id" required>
      </div>
   <div class="form-group" style="width:30%">
-    <label for="exampleInputPassword1"><h1 style="color:white">Password</h1></label>
+    <label for="exampleInputPassword1"><h1 style="color:#fff">Password</h1></label>
     <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password" required>
   </div>
   
@@ -77,8 +77,7 @@ if(isset($_POST['s']))
    left: 0;
    bottom: 0;
    width: 100%;
-   height: 30px;
-   background-color: rgba(0,0,0,0.8);
+   background-color:#3b3b3b;
    color: white;
    text-align: center;">
   <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>

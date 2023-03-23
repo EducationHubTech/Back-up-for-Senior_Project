@@ -10,7 +10,7 @@
 </head>
 <body>
 
- <nav class="navbar navbar-default navbar-fixed-top">
+ <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#3b3b3b;>
   <div class="container">
     <div class="navbar-header">
       <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -19,7 +19,7 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b>on_the_go incident reporter</b></a>
+      <a class="navbar-brand" href="home.php"><b>On_The_Go Incident Reporter</b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -34,9 +34,9 @@
         <d class="row text-center">
 
             <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
+                <div class="thumbnail" style="Background-color:#3b3b3b;">
                     <div class="caption">
-                        <h3>Taker Login</h3>
+                        <h3 style="color:#fff">Taker Login</h3>
                         <p>
                             <a href="Takerlogin.php" class="btn btn-primary">Taker Login</a>
                         </p>
@@ -45,9 +45,9 @@
             </div>
 
             <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Handler Login</h3>
+                <div class="thumbnail" style="Background-color:#3b3b3b;">
+                    <div class="caption" >
+                        <h3 style="color:#fff">Handler Login</h3>
                         <p>
                             <a href="Handlerlogin.php" class="btn btn-primary">Handler Login</a>
                         </p>
@@ -57,12 +57,12 @@
 
            
 
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail">
+            <div class="col-md-4 col-sm-12 hero-feature"  >
+                <div class="thumbnail" style="Background-color:#3b3b3b;">
                     <div class="caption">
-                        <h3>Subcity_Police Login</h3>
+                        <h3 style="color:#fff">Subcity Police Login</h3>
                         <p>
-                            <a href="Sub_policelogin.php" class="btn btn-primary">Sub_Police Login</a>
+                            <a href="Sub_policelogin.php" class="btn btn-primary" >Sub_Police Login</a>
                         </p>
                     </div>
                 </div>
@@ -70,9 +70,9 @@
  
            
             <div class="col-md-4 col-sm-12 hero-feature" >
-                <div class="thumbnail">
-                    <div class="caption">
-                        <h3>Admin Login</h3>
+                <div class="thumbnail" style="Background-color:#3b3b3b;">
+                    <div class="caption" >
+                        <h3 style="color:#fff">Admin Login</h3>
                         <p>
                             <a href="Adminlogin.php" class="btn btn-primary">Admin Login</a>
                         </p>
@@ -84,6 +84,18 @@
 
         </div>
 </div>
+
+
+
+<div style="position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color:#3b3b3b;
+            color: white;
+            text-align: center;">
+            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
+         </div>
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>

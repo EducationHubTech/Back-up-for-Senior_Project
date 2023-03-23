@@ -62,11 +62,11 @@ if(sta2!="" && x2>=0){
     
     
 </head>
-<body style="color: black;background-image: url(locker.jpeg);background-size: 100%;background-repeat: no-repeat;">
-	<nav class="navbar navbar-default navbar-fixed-top">
+<body style="color: black;background-image: url(pictures/subcitypolice.jpg);background-size: 100%;background-repeat: no-repeat;">
+	<nav class="navbar navbar-default navbar-fixed-top" style="background-color:#3b3b3b;">
     <div class="container">
       <div class="navbar-header">
-        <a class="navbar-brand" href="home.php"><b>on_the_go incident reporter</b></a>
+        <a class="navbar-brand" href="home.php"><b> On_The_Go Incident Reporter </b></a>
       </div>
       <div id="navbar" class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
@@ -94,15 +94,14 @@ if(sta2!="" && x2>=0){
 	</div>
 </div>
 <div style="position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 30px;
-   background-color: rgba(0,0,0,0.8);
-   color: white;
-   text-align: center;">
-  <h4 style="color: white;">&copy <b>on_the_go incident reporter</b></h4>
-</div> 
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color:#3b3b3b;
+            color: white;
+            text-align: center;">
+            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
+         </div>
 
 
 </body>
