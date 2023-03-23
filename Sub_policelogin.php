@@ -32,7 +32,7 @@ if(isset($_POST['s']))
         }
         else 
         {
-          header("location:police_pending_complain.php");
+          header("location:Sub_policeHome.php");
         }
     }                
 }

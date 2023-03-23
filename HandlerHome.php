@@ -1,39 +1,65 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
-table {
-    border-collapse: collapse;
-    width: 100%;
-}
 
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #000;
-}
+<?php
+    session_start();
+    if(!isset($_SESSION['x']))
+        header("location:Handlerlogin.php");
+    
+    $conn=mysqli_connect("localhost","root","");
+   
+    if (!$conn) {
+      die("Connection failed: " . mysqli_connect_error());
+  }
+  mysqli_select_db($conn,"on_the_go incident reporter");
 
-tr:hover {
-    background-color: #f5f5f5;
-}
+ 
+      
+  
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
+  $result1=mysqli_query($conn,"SELECT location FROM p_handler");
+  $q2=mysqli_fetch_assoc($result1);
+  $location=$q2['location'];
+  
+  if(isset($_POST['s2']))
+  {
+  if($_SERVER["REQUEST_METHOD"]=="POST")
+  {
+      $cid=$_POST['cid'];
+      
+      $_SESSION['cid']=$cid;
+      $qu=mysqli_query($conn,"SELECT  inc_status,location From p_handler where c_id='$cid'");
+      
+      $q=mysqli_fetch_assoc($qu);
+      $inc_st=$q['inc_status'];
+      $loc=$q['location'];
+      
+      if(strcmp("$loc","$location")!=0)
+      {
+        // $msg="Case Not of your Location";
+       // echo "<script type='text/javascript'>alert('$msg');</script>";
+       header("location:Handler_complain_details.php");
+        
+      }
+      else if(strcmp("$inc_st","Unassigned")==0)
+      {   
+          header("location:Handler_complain_details.php");
+          
+      }
+      else{
+          header("location:Handler_complain_details1.php");
+      }
+  }
+  }
+  
+  $query="SELECT id_no,c_id,type_crime,d_o_c,repo_time_and_date,location,description,inc_status,pol_status,p_id from p_handler order by c_id desc";
+  $result=mysqli_query($conn,$query);  
 
-.space {
-    margin-bottom: 16px;
-}
-.button-col {
-    width: 25%;
-}
 
-.button-col button {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-}
-</style>
+
+
+  ?>
 
 </head>
 <body style="background-color: #dfdfdf">
@@ -46,7 +72,7 @@ tr:nth-child(even) {
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="home.php"><b> on_the-go incident reporter </b></a>
+      <a class="navbar-brand" href="home.php"><b> on_the_go incident reporter </b></a>
     </div>
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
@@ -61,6 +87,7 @@ tr:nth-child(even) {
     </div>
   </div>
  </nav>
+ 
 
     <form style="margin-top: 7%; margin-left: 40%;" method="post">
       <input type="text" name="cid" style="width: 250px; height: 30px; background-color:white;" placeholder="&nbsp Complaint Id" id="ciid" onfocusout="f1()" required>
@@ -69,33 +96,51 @@ tr:nth-child(even) {
         </div>
     </form>
     
-    <table>
-		<thead>
-			<tr>
-				<th>Complaint ID</th>
-				<th>Type of Crime</th>
-				<th>Date of Crime</th>
-				<th>Location</th>
-				<th>Complaint Status</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php
-				if(isset($_POST['complaints'])) {
-					$complaints = $_POST['complaints'];
-					foreach($complaints as $complaint) {
-						echo "<tr>";
-						echo "<td>" . $complaint['complaint_id'] . "</td>";
-						echo "<td>" . $complaint['type_of_crime'] . "</td>";
-						echo "<td>" . $complaint['date_of_crime'] . "</td>";
-						echo "<td>" . $complaint['location'] . "</td>";
-						echo "<td>" . $complaint['complaint_status'] . "</td>";
-						echo "</tr>";
-					}
-				}
-			?>
-		</tbody>
-	</table>
+    <div style="padding:50px;">
+   <table class="table table-bordered">
+    <thead class="thead-dark" style="background-color: black; color: white;">
+      <tr>
+
+        <th scope="col">Registration ID</th>
+        <th scope="col">Complaint Id</th>
+        <th scope="col">Type of Crime</th>
+        <th scope="col">Date of Crime</th>
+        <th scope="col">Reported Time and Date </th>
+        <th scope="col">Location</th>
+        <th scope="col">Descripition</th>
+        <th scope="col">Complaint Status</th>
+        <th scope="col">Police Status</th>
+        <th scope="col">Police ID</th>
+       
+      </tr>
+    </thead>
+
+            <?php
+              while($rows=mysqli_fetch_assoc($result)){
+
+             ?> 
+
+            <tbody style="background-color: white; color: black;">
+      <tr>
+          <td><?php echo $rows['id_no'];?></td>
+          <td><?php echo $rows['c_id'];?></td>
+          <td><?php echo $rows['type_crime'];?></td>     
+          <td><?php echo $rows['d_o_c'];?></td>
+          <td><?php echo $rows['repo_time_and_date'];?></td>
+          <td><?php echo $rows['location'];?></td>
+          <td><?php echo $rows['description'];?></td>
+          <td><?php echo $rows['inc_status']; ?></td>
+          <td><?php echo $rows['pol_status']; ?></td>
+          <td><?php echo $rows['p_id']; ?></td>
+      </tr>
+    </tbody>
+    
+    <?php
+    } 
+    ?>
+  
+</table>
+ </div>
     
 
     <div style="position: fixed;
@@ -108,20 +153,7 @@ tr:nth-child(even) {
    text-align: center;">
   <h4 style="color: white;">&copy <b> on_the_go incident reporter | All Right Reserved</b></h4>
 </div>
-<?php
-    session_start();
-    if(!isset($_SESSION['x']))
-        header("location:Handlerlogin.php");
-    
-    $conn=mysqli_connect("localhost","root","");
-   
-    if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
-  mysqli_select_db($conn,"on_the_go incident reporter");
 
-
-  ?>
 
 	<title>Handler Homepage</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">

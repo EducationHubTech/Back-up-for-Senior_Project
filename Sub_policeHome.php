@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Police pending complain</title>
+	<title>subcity Police pending complain</title>
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 	<link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
@@ -9,24 +9,24 @@
      <?php
     session_start();
     if(!isset($_SESSION['x']))
-        header("location:policelogin.php");
+        header("location:Sub_policelogin.php");
     $conn=mysqli_connect("localhost","root","");
     if(!$conn)
     {
         die("could not connect".mysqli_error());
     }
-    mysqli_select_db($conn,"crime_portal");
+    mysqli_select_db($conn,"on_the_go incident reporter");
     if(isset($_POST['s2']))
     {
       if($_SERVER["REQUEST_METHOD"]=="POST")
       {
        $cid=$_POST['cid'];
        $_SESSION['cid']=$cid;
-       $alok=mysqli_query($conn,"select p_id from complaint where c_id='$cid'");
-       $row = mysqli_fetch_assoc($alok);
+       $joss=mysqli_query($conn,"select p_id from p_handler where c_id='$cid'");
+       $row = mysqli_fetch_assoc($joss);
        $p_id=$_SESSION['pol'];
      if($row['p_id']==$p_id){
-     header("location:police_complainDetails.php");}
+     header("location:Sub_police_complainDetails.php");}
      else{
          $message = "Not in your scope";
         echo "<script type='text/javascript'>alert('$message');</script>";
@@ -35,7 +35,7 @@
 }
     
     $p_id=$_SESSION['pol'];
-     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location FROM complaint where p_id='$p_id' and pol_status='In Process' order by c_id desc");
+     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location FROM p_handler where p_id='$p_id' and pol_status='In Process' order by c_id desc");
     ?>
  <script>
      function f1()

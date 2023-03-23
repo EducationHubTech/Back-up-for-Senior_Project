@@ -67,7 +67,8 @@ table tr.invisible-row {
         <li class="active"><a href="TakerHome.php">Taker Home</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
-      
+         <li class="active" ><a href="TakerHome.php">View Complaints</a></li>
+        <li ><a href="TakerHistory.php">Taker History</a></li>
         <li><a href="Taker_logout.php">Logout &nbsp <i class="fa fa-sign-out" aria-hidden="true"></i></a></li>
       </ul>
     </div>
@@ -125,6 +126,7 @@ table tr.invisible-row {
       <th>Location</th>
       <th>Descripition</th>
       <th>Complaint Status</th>
+
       <th>Police ID</th></tr>";
   
       // Loop through the result set and output each row as a table row
@@ -183,36 +185,7 @@ table tr.invisible-row {
 
 // check if the pass to handler button was clicked
 if(isset($_POST['pass_to_handler'])) {
-
-    // retrieve the data from the row
-    $c_id = $_POST['c_id'];
-    $id_no = $_POST['id_no'];
-    $type_crime = $_POST['type_crime'];
-    $d_o_c = $_POST['d_o_c'];
-    $repo_time_and_date = $_POST['repo_time_and_date'];
-    $location = $_POST['location'];
-    $description = $_POST['description'];
-    $inc_status = $_POST['inc_status'];
-    $p_id = $_POST['p_id'];
-
-    // insert the data into the p_handler table
-    $sql = "INSERT INTO p_handler (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id)
-    VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
-    
-    if ($conn->query($sql) === TRUE) {
-        // remove the row from the table
-        // add your code to remove the row here
-    } else {
-        echo "Error: " . $sql . "<br>" . $conn->error;
-    }
-}
-
-
-
-
-
-if (isset($_POST['reject_complaint'])) {
-  // get the values from the $_POST superglobal array
+  // retrieve the data from the row
   $c_id = $_POST['c_id'];
   $id_no = $_POST['id_no'];
   $type_crime = $_POST['type_crime'];
@@ -222,26 +195,30 @@ if (isset($_POST['reject_complaint'])) {
   $description = $_POST['description'];
   $inc_status = $_POST['inc_status'];
   $p_id = $_POST['p_id'];
-
-
   
-
-  // check if the connection was successful
-  if (!$conn) {
-      die("Connection failed: " . mysqli_connect_error());
-  }
-
-  // insert the values into the database
-  $sql = "INSERT INTO del_taker (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id) VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
-
-  if (mysqli_query($conn, $sql)) {
-      //echo "Record inserted successfully";
+  // check if the row already exists in the p_handler table
+  $sql = "SELECT * FROM p_handler WHERE c_id = '$c_id'";
+  $result = $conn->query($sql);
+  if ($result->num_rows > 0) {
+      // the row already exists, update the values
+      $sql = "UPDATE p_handler SET id_no='$id_no', type_crime='$type_crime', d_o_c='$d_o_c', repo_time_and_date='$repo_time_and_date', location='$location', description='$description', inc_status='$inc_status', p_id='$p_id' WHERE c_id='$c_id'";
+      if ($conn->query($sql) === TRUE) {
+          // remove the row from the table
+          // add your code to remove the row here
+      } else {
+          echo "Error updating record: " . $conn->error;
+      }
   } else {
-      echo "Error inserting record: " . mysqli_error($conn);
+      // the row does not exist, insert the values as a new row
+      $sql = "INSERT INTO p_handler (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id)
+      VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
+      if ($conn->query($sql) === TRUE) {
+          // remove the row from the table
+          // add your code to remove the row here
+      } else {
+          echo "Error: " . $sql . "<br>" . $conn->error;
+      }
   }
-
-
-  
 }
 
 
@@ -249,11 +226,48 @@ if (isset($_POST['reject_complaint'])) {
 
 
 
+if (isset($_POST['reject_complaint'])) {
+   // retrieve the data from the row
+   $c_id = $_POST['c_id'];
+   $id_no = $_POST['id_no'];
+   $type_crime = $_POST['type_crime'];
+   $d_o_c = $_POST['d_o_c'];
+   $repo_time_and_date = $_POST['repo_time_and_date'];
+   $location = $_POST['location'];
+   $description = $_POST['description'];
+   $inc_status = $_POST['inc_status'];
+   $p_id = $_POST['p_id'];
+   
+   // check if the row already exists in the p_handler table
+   $sql = "SELECT * FROM del_taker WHERE c_id = '$c_id'";
+   $result = $conn->query($sql);
+   if ($result->num_rows > 0) {
+       // the row already exists, update the values
+       $sql = "UPDATE del_taker SET id_no='$id_no', type_crime='$type_crime', d_o_c='$d_o_c', repo_time_and_date='$repo_time_and_date', location='$location', description='$description', inc_status='$inc_status', p_id='$p_id' WHERE c_id='$c_id'";
+       if ($conn->query($sql) === TRUE) {
+           // remove the row from the table
+           // add your code to remove the row here
+       } else {
+           echo "Error updating record: " . $conn->error;
+       }
+   } else {
+       // the row does not exist, insert the values as a new row
+       $sql = "INSERT INTO del_taker (c_id, id_no, type_crime, d_o_c, repo_time_and_date, location, description, inc_status, p_id)
+       VALUES ('$c_id', '$id_no', '$type_crime', '$d_o_c', '$repo_time_and_date', '$location', '$description', '$inc_status', '$p_id')";
+       if ($conn->query($sql) === TRUE) {
+           // remove the row from the table
+           // add your code to remove the row here
+       } else {
+           echo "Error: " . $sql . "<br>" . $conn->error;
+       }
+   }
 
-
-
-
-
+    // modify the complaint table
+    $sql = "SELECT * FROM del_taker WHERE c_id = '$c_id'";
+    $result = $conn->query($sql);
+    $sql = mysqli_query($conn,"UPDATE del_taker SET inc_status='Unfulfilled Info',p_id='Not Assigned'");
+ }
+ 
 
 
 // close the database connection
