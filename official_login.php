@@ -30,11 +30,11 @@
  </nav>
 
  <div class="container">
-  <hr> <br><br> <br><br> <br><br> <br><br> <br><br>
+  <hr> <br><br> <br><br> <br><br> <br><br> <br><br><br><br>
         <d class="row text-center">
 
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail" style="Background-color:#3b3b3b;">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail" style="Background-color:#3b3b3b;width:400px;">
                     <div class="caption">
                         <h3 style="color:#fff">Taker Login</h3>
                         <p>
@@ -44,8 +44,8 @@
                 </div>
             </div>
 
-            <div class="col-md-4 col-sm-12 hero-feature">
-                <div class="thumbnail" style="Background-color:#3b3b3b;">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail" style="Background-color:#3b3b3b;width:400px;">
                     <div class="caption" >
                         <h3 style="color:#fff">Handler Login</h3>
                         <p>
@@ -57,8 +57,8 @@
 
            
 
-            <div class="col-md-4 col-sm-12 hero-feature"  >
-                <div class="thumbnail" style="Background-color:#3b3b3b;">
+            <div class="col-md-6 col-sm-12 hero-feature"  >
+                <div class="thumbnail" style="Background-color:#3b3b3b;width:400px;">
                     <div class="caption">
                         <h3 style="color:#fff">Subcity Police Login</h3>
                         <p>
@@ -69,8 +69,8 @@
             </div>
  
            
-            <div class="col-md-4 col-sm-12 hero-feature" >
-                <div class="thumbnail" style="Background-color:#3b3b3b;">
+            <div class="col-md-6 col-sm-12 hero-feature">
+                <div class="thumbnail" style="Background-color:#3b3b3b;width:400px;">
                     <div class="caption" >
                         <h3 style="color:#fff">Admin Login</h3>
                         <p>
