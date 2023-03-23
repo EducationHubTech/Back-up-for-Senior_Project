@@ -16,7 +16,7 @@
     $cid=$_SESSION['cid'];
     $p_id=$_SESSION['pol'];    
     
-    $query="select c_id,type_crime,d_o_c,description from p_handler natural join user where c_id='$cid' and p_id='$p_id'";
+    $query="select c_id,type_crime,d_o_c,description,mob,sub,woreda from p_handler natural join user where c_id='$cid' and p_id='$p_id'";
     $result=mysqli_query($conn,$query);  
     
     if(isset($_POST['status'])){
@@ -88,6 +88,7 @@
       <th scope="col">Description</th>
         <th scope="col">Complainant Mobile</th>
         <th scope="col">Complainant Address</th>
+        <th scope="col">Woreda</th>
     </tr>
        </thead>
       <?php
@@ -99,6 +100,10 @@
         <td><?php echo $rows['type_crime']; ?></td>
         <td><?php echo $rows['d_o_c']; ?></td>
         <td><?php echo $rows['description']; ?></td>
+        <td><?php echo $rows['mob']; ?></td>
+        <td><?php echo $rows['sub']; ?></td>
+        <td><?php echo $rows['woreda']; ?></td>
+        
         
        </tbody>
        <?php

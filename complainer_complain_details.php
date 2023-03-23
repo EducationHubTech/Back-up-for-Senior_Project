@@ -24,6 +24,8 @@
     $result=mysqli_query($conn,$query);
     
     $res2=mysqli_query($conn,"select d_o_u,case_update from update_case where c_id='$c_id'");
+
+
   ?>
 
 	<title>Complaint Details</title>
@@ -103,6 +105,13 @@
             <?php
                 } 
             ?>
+          
+            </table>
+        </div>
+
+
+       
+        
           
             </table>
         </div>

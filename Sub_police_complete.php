@@ -20,7 +20,7 @@
       
     
     $p_id=$_SESSION['pol'];
-     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location FROM p_handler natural join user where p_id='$p_id' and pol_status='ChargeSheet Filed' order by c_id desc");
+     $result=mysqli_query($conn,"SELECT c_id,type_crime,d_o_c,location,mob,sub,woreda FROM p_handler natural join user where p_id='$p_id' and pol_status='ChargeSheet Filed' order by c_id desc");
     ?>
 
 </head>
@@ -63,6 +63,7 @@
           <th scope="col">Location of Crime</th>
           <th scope="col">Complainant Mobile</th>
           <th scope="col">Complainant Address</th>
+          <th scope="col">Woreda</th>
         
       </tr>
     </thead>
@@ -77,6 +78,9 @@
         <td><?php echo $rows['type_crime']; ?></td>     
         <td><?php echo $rows['d_o_c']; ?></td>   
         <td><?php echo $rows['location']; ?></td>
+        <td><?php echo $rows['mob']; ?></td>
+        <td><?php echo $rows['sub']; ?></td>
+        <td><?php echo $rows['woreda']; ?></td>
                    
       </tr>
     </tbody>
