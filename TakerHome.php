@@ -2,50 +2,41 @@
 <html>
 <head>
 <style>
-table {
+
+.table{
     border-collapse: collapse;
-    width: 100%;
+    margin: 25px 0px;
+    font-size: 0.9em;
+    min-width: 400px;
+    /* border:black 2px solid; */
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0 , 0 ,0 ,0.15);
 }
 
-th, td {
-    padding: 8px;
-    text-align: left;
-    border-bottom: 1px solid #000;
+.table thead tr{
+    background-color: #000;
+    color:white;
+    font-weight: bold;
 }
 
-th{
-  background-color: black; 
-  color: white;
+.table th,.table td{
+    padding: 12px 15px;
 }
 
-tr:hover {
-    background-color: #f5f5f5;
+.table tbody tr {
+
+    border-bottom: 1px solid #dddddd;
 }
 
-tr:nth-child(even) {
-    background-color: #f2f2f2;
+.table tbody tr:nth-of-type(even){
+   background-color: #f3f3f3;
 }
 
-.space {
-    margin-bottom: 16px;
-}
-.button-col {
-    width: 25%;
+.table tbody tr:last-of-type{
+    border-bottom: 3px solid #000;
 }
 
-.button-col button {
-    display: block;
-    margin: 0 auto;
-    width: 80%;
-}
-
-table tr.hidden-row {
-  display: none;
-}
-
-table tr.invisible-row {
-  display: none;
-}
 </style>
 </head>
 <body style="background-color: #dfdfdf">
@@ -85,16 +76,7 @@ table tr.invisible-row {
     
     
 
-    <div style="position: fixed;
-   left: 0;
-   bottom: 0;
-   width: 100%;
-   height: 30px;
-   background-color: rgba(0,0,0,0.8);
-   color: white;
-   text-align: center;">
-  <h4 style="color: white;">&copy <b> on_the_go incident reporter | All Right Reserved</b></h4>
-</div>
+ 
 
 
 
@@ -116,7 +98,8 @@ table tr.invisible-row {
   // Check if there are any complaints in the database
   if (mysqli_num_rows($result) > 0) {
       // Start the table and output the header row
-      echo "<table>";
+      echo "<table  class='table';>";
+      echo "<thead>";
       echo "<tr>
       <th>Registration ID</th>
       <th>Complaint ID</th>
@@ -126,9 +109,12 @@ table tr.invisible-row {
       <th>Location</th>
       <th>Descripition</th>
       <th>Complaint Status</th>
-
-      <th>Police ID</th></tr>";
-  
+      <th>Police ID</th>
+      <th>Accept </th>
+      <th>Reject</th>
+      </tr>";
+      echo"</thead>";
+     echo"<tbody?>";
       // Loop through the result set and output each row as a table row
       while ($row = mysqli_fetch_assoc($result)) {
         echo "<tr class='complaint-row' id='complaint-".$row["c_id"]."'>
@@ -141,6 +127,7 @@ table tr.invisible-row {
             <td>" . $row["description"] . "</td>
             <td>" . $row["inc_status"] . "</td>
             <td>" . $row["p_id"] . "</td>
+            
             <td>
                 
                     <form method='post'>
@@ -174,8 +161,11 @@ table tr.invisible-row {
                 
             
             </td>
+
+            
         </tr>";
     }
+    echo "</tbody>";
       // End the table
       echo "</table>";
   } else {
@@ -315,17 +305,18 @@ function confirmReject(complaintId) {
 }
 </script>
 
+<br> <br> <br>
 
-<div style="position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color:#3b3b3b;
-            color: white;
-            text-align: center;">
-            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
-         </div>
-
+<div style="position: relative;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height:25px;
+   background-color: rgba(0,0,0,0.8);
+   color: white;
+   text-align: center;">
+  <h4 style="color: white;">&copy <b> on_the_go incident reporter | All Right Reserved</b></h4>
+</div>
  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.js"></script>
  <script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 </body>

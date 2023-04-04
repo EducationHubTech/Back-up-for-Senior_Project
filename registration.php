@@ -122,7 +122,7 @@ if(isset($_POST['s'])){
 			<br><br>
 			<div class="login-form">	
 				<form action="#" method="post">
-					<p style="color:#dfdfdf">Full Name</p><input type="text"  name="name"  required="" id="name1" onfocusout="f1()" />
+					<p style="color:#dfdfdf">Full Name</p><input type="text"  name="name" autocomplete="off"  required="" id="name1" onfocusout="f1()" />
 					<p style="color:#dfdfdf">Email-Id</p><input type="email"  name="email"  required="" id="email1" onfocusout="f1()"/>
           <p style="color:#dfdfdf">Password</p><input type="text"  name="password"  placeholder="6 Character minimum" pattern=".{6,}" id="pass" onfocusout="f1()"/>
           
@@ -162,15 +162,11 @@ if(isset($_POST['s'])){
 </div>	
 
 
-<div style="position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color:#3b3b3b;
-            color: white;
-            text-align: center;">
-            <h4 style="color: white;">&copy <b>On_The_Go Incident Reporter</b></h4>
-         </div>
+ <?php
+
+   include('footer.php');
+?> 
+
 
 
 

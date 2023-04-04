@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -50,7 +51,7 @@ if(isset($_POST['s']))
     <div id="navbar" class="collapse navbar-collapse">
       <ul class="nav navbar-nav">
         <li><a href="official_login.php">Official Login</a></li>
-        <li class="active"><a href="Takerlogin.php">Handler Login</a></li>
+        <li class="active"><a href="Handlerlogin.php">Handler Login</a></li>
       </ul>
     
     </div>
